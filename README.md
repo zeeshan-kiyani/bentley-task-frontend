@@ -4,3 +4,5 @@
 	`npm install`
 2. To run the project
 	`npm start`
+# Note 
+If you are getting any error realted to npm please remove package-lock.json file then repeat the steps
