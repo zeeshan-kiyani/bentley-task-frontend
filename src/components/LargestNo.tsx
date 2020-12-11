@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Form ,Button,Container,Row,Col} from "react-bootstrap";
 import {apiRequestAxio} from '../services/api/apiClass'
-let noArr:number[] = [];
+let noArr:any[] = [];
 let noHolder:any = '';
 const LargestNo = () =>{
     const [largestNo ,setLargestNo] = useState('');
     const [type ,setType] = useState('');
-    const [noArrayElement , setNoArrayElement] = useState(0);
+    const [noArrayElement , setNoArrayElement] = useState('');
     useEffect(() => {
         
     },[])
@@ -34,10 +34,10 @@ const LargestNo = () =>{
     const collectArray = () =>{
         noArr.push(noArrayElement)
         noHolder = ''
-        noArr.map((value:any)=>{
+        noArr.map((value:number)=>{
             noHolder += `${value},`;
         })
-        setNoArrayElement(0);
+        setNoArrayElement('');
     }
     return (
         <React.Fragment>
@@ -52,10 +52,10 @@ const LargestNo = () =>{
                 <Col xs={{ span: 6, offset: 3 }}>
                     <Form.Group controlId="formArrayElement">
                     <Form.Label>Please Enter the values in array</Form.Label>
-                    <Form.Control type='number' value={noArrayElement} onChange={(e)=>setNoArrayElement(parseInt(e.target.value))} placeholder='Add element to the array' />
+                    <Form.Control type='number'  onChange={(e)=>setNoArrayElement(e.target.value)} placeholder='Add element to the array' />
                     </Form.Group>
                     <div>
-                        <Button onClick={collectArray} variant="outline-warning">Add No</Button>
+                        <Button   onClick={collectArray} disabled={noArrayElement!==''?false:true} variant="outline-warning">Add No</Button>
                     </div>
                 </Col>
             </Row>
